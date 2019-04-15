@@ -17,6 +17,8 @@ const host = process.env.HOST;
 var server = http.createServer(function(req,res){
 	// Biến request: là biến lưu trữ thông tin gửi lên của client
 	// Biến response: là biến lưu trữ các thông tin trả về cho client
+	
+	//Khai báo các tham số của trang web như thông tin định dạng file trả về, kích thước file ... mã code 200 tức là truy cập thành công.
 	res.writeHead(200, {"Content-Type": "text/plain"});
 	if(req.url=='/hello') {
 		if(req.method == "GET"){
