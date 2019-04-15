@@ -1,13 +1,14 @@
-//BUOC 1:Import module http và fs
+//BUOC 1:Import module http vÃ  fs
 const http = require('http');
 const fs = require('fs');
 
-const port =8080;
+const port = process.env.PORT;
+const host = process.env.HOST;
 
 //BUOC 2: Khoi tao server
 const server = http.createServer(function(req,res){
-	// Bien request: là bien lýu tru thông tin gui lên cua client
-	// Bien response: là bien lýu tru các thông tin tra ve cho client
+	// Bien request: lÃ  bien lÃ½u tru thÃ´ng tin gui lÃªn cua client
+	// Bien response: lÃ  bien lÃ½u tru cÃ¡c thÃ´ng tin tra ve cho client
 	
 	if(req.url=='/hello') {
 		if(req.method == "GET"){
@@ -26,22 +27,22 @@ const server = http.createServer(function(req,res){
 			res.write('world deleted');
 			res.end;
 		}
-		// K?t thúc
+		// K?t thÃºc
        	 	res.end();
 	}
 	else {
 		res.writeHead(200, {"Content-Type": "text/plain"});
         		res.write('URL not found!');
     
-		// Ket thúc
+		// Ket thÃºc
        	 	res.end();
 	}
 	
 	
 });
 
-//BUOC 3: Lang nghe cong 8080 thi thuc hien chýõng trinh
+//BUOC 3: Lang nghe cong 8080 thi thuc hien chÃ½Ãµng trinh
 server.listen(port,'localhost',function(err){
-	if(!err)	console.log('Server is running on '+ port);
+	if(!err)	console.log('Server is running on ${port}, {host}');
 	else	console.log(err);
 });
