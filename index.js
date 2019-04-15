@@ -1,14 +1,22 @@
-//BUOC 1:Import module http và fs
-const http = require('http');
-const fs = require('fs');
+/*
+--------------ĐỀ BÀI-------------------
+* Không được sử dụng thư viện ở bên ngoài, chỉ được sử dụng những thư viện có sẵn của NODEJS (fs,http,...).
+* Sử dụng biến môi trường để nhận vào "PORT" và "HOST" khi khởi động ứng dụng.
 
+*/
+
+
+//BUOC 1:Import module http
+const http = require('http');
+
+//Sử dụng biến môi trường để nhận vào "PORT" và "HOST"
 const port = process.env.PORT;
 const host = process.env.HOST;
 
-//BUOC 2: Khoi tao server
+//BUOC 2: Khởi tạo server
 const server = http.createServer(function(req,res){
-	// Bien request: là bien lýu tru thông tin gui lên cua client
-	// Bien response: là bien lýu tru các thông tin tra ve cho client
+	// Biến request: là biến lưu trữ thông tin gửi lên của client
+	// Biến response: là biến lưu trữ các thông tin trả về cho client
 	
 	if(req.url=='/hello') {
 		if(req.method == "GET"){
@@ -27,21 +35,19 @@ const server = http.createServer(function(req,res){
 			res.write('world deleted');
 			res.end;
 		}
-		// K?t thúc
+		// Kết thúc
        	 	res.end();
 	}
 	else {
 		res.writeHead(200, {"Content-Type": "text/plain"});
         		res.write('URL not found!');
     
-		// Ket thúc
+		// Kết thúc
        	 	res.end();
 	}
-	
-	
 });
 
-//BUOC 3: Lang nghe cong 8080 thi thuc hien chýõng trinh
+//BUOC 3: Lắng nghe cổng 8080 thì thực hiện chương trinh
 server.listen(port,'localhost',function(err){
 	if(!err)	console.log('Server is running on ${port}, {host}');
 	else	console.log(err);
