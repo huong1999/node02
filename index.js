@@ -14,7 +14,7 @@ const port = process.env.PORT;
 const host = process.env.HOST;
 
 //BUOC 2: Khởi tạo server
-const server = http.createServer(function(req,res){
+var server = http.createServer(function(req,res){
 	// Biến request: là biến lưu trữ thông tin gửi lên của client
 	// Biến response: là biến lưu trữ các thông tin trả về cho client
 	
