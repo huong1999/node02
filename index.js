@@ -45,7 +45,7 @@ var server = http.createServer(function(req,res){
 	}
 });
 
-//BUOC 3: Lắng nghe cổng 8080 thì thực hiện chương trinh
+//BUOC 3: Lắng nghe cổng port thì thực hiện chương trình
 server.listen(port,host,function(err){
 	if(!err)	console.log('Your port is ${port}, ${host}');
 	else	console.log(err);
