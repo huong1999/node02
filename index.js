@@ -17,31 +17,29 @@ const host = process.env.HOST;
 var server = http.createServer(function(req,res){
 	// Biến request: là biến lưu trữ thông tin gửi lên của client
 	// Biến response: là biến lưu trữ các thông tin trả về cho client
-	
+	res.writeHead(200, {"Content-Type": "text/plain"});
 	if(req.url=='/hello') {
 		if(req.method == "GET"){
 			res.write('world');
-			res.end;
+			
 		}
 		else if(req.method == "POST"){
 			res.write('world created');
-			res.end;
+			
 		}
 		else if(req.method == "PUT"){
 			res.write('world updated');
-			res.end;
+			
 		}
 		else if(req.method == "DELETE"){
 			res.write('world deleted');
-			res.end;
+			
 		}
 		// Kết thúc
        	 	res.end();
 	}
 	else {
-		res.writeHead(200, {"Content-Type": "text/plain"});
-        		res.write('URL not found!');
-    
+		res.write('URL not found!');
 		// Kết thúc
        	 	res.end();
 	}
@@ -49,6 +47,6 @@ var server = http.createServer(function(req,res){
 
 //BUOC 3: Lắng nghe cổng 8080 thì thực hiện chương trinh
 server.listen(port,host,function(err){
-	if(!err)	console.log('Server is running on ${port}, ${host}');
+	if(!err)	console.log('Your port is ${port}, ${host}');
 	else	console.log(err);
 });
